@@ -17,7 +17,7 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        pip install requests
+        pip install requests 
     - name: Run ip_get.py
       run: python .github/workflows/ip_get.py
     - name: Commit and push changes
