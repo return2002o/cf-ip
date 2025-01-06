@@ -20,3 +20,10 @@ jobs:
         pip install requests
     - name: Run ip_get.py
       run: python .github/workflows/ip_get.py
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Action Bot"
+        git config --global user.email "action@github.com"
+        git add README.md
+        git commit -m "Update README.md with new IP addresses"
+        git push
