@@ -22,6 +22,7 @@ def main():
                 f.write("# IP Addresses with example.com\n")
                 for ip in ip_domin:
                     f.write(f"- {ip}\n")
+                    print(ip)
         else:
             logging.error(f"Request failed with status code: {resp.status_code}")
     except requests.RequestException as e:
