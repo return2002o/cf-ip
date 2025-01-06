@@ -22,12 +22,10 @@ jobs:
       run: python .github/workflows/ip_get.py
     - name: Commit and push changes
       env:
-        # 从 GitHub Secrets 中获取自定义的 PAT
-        TOKEN: ${{ secrets.CF }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "GitHub Action Bot"
         git config --global user.email "action@github.com"
         git add README.md
         git commit -m "Update README.md with new IP addresses"
-        # 优化 git push 命令，使用正确的认证方式
-        git push https://${TOKEN}@github.com/return2002o/cf-ip.git main
+        git push origin main
