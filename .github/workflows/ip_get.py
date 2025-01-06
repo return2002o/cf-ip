@@ -1,5 +1,9 @@
 import requests
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
 
 def main():
     url = 'https://ip.164746.xyz/ipTop.html'
@@ -13,20 +17,18 @@ def main():
                 if ip:
                     ip_domin.append(ip + '.example.com')
             # 写入文件 README.md
-            with open(os.path.join(os.getcwd(), 'README.md'), 'w') as f:
+            readme_path = os.path.join(os.getenv('GITHUB_WORKSPACE'), 'README.md')
+            with open(readme_path, 'w') as f:
+                f.write("# IP Addresses with example.com\n")
                 for ip in ip_domin:
-                    f.write(ip + '\n')
+                    f.write(f"- {ip}\n")
         else:
-            print(f"Request failed with status code: {resp.status_code}")
+            logging.error(f"Request failed with status code: {resp.status_code}")
     except requests.RequestException as e:
-        print(f"Error occurred during request: {e}")
+        logging.error(f"Error occurred during request: {e}")
     except IOError as e:
-        print(f"Error occurred during file write: {e}")
-    # 写入文件 README.md
-    with open(os.path.join(os.getcwd(), 'README.md'), 'w') as f:
-        f.write("# IP Addresses with example.com\n")
-        for ip in ip_domin:
-            f.write(f"- {ip}\n")
+        logging.error(f"Error occurred during file write: {e}")
+
 
 if __name__ == "__main__":
     main()
