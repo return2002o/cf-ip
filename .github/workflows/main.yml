@@ -22,7 +22,7 @@ jobs:
       run: python .github/workflows/ip_get.py
     - name: Commit and push changes
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ YOUR_PERSONAL_ACCESS_TOKEN }}
       run: |
         git config --global user.name "GitHub Action Bot"
         git config --global user.email "action@github.com"
