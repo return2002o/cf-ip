@@ -29,5 +29,5 @@ jobs:
         git config --global user.email "action@github.com"
         git add README.md
         git commit -m "Update README.md with new IP addresses"
-        # 使用存储在 secrets 中的 PAT 进行认证和 push 操作
+        # 优化 git push 命令，使用正确的认证方式
         git push https://${TOKEN}@github.com/return2002o/cf-ip.git main
