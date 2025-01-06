@@ -16,7 +16,7 @@ def main():
             if ip:
                 ip_domin.append(ip + '.example.com')
         # 写入文件 README.md
-        readme_path = ".github/workflows/README.md"
+        readme_path = "README.md"
         with open(readme_path, 'w') as f:
             f.write("# IP Addresses with example.com\n")
             for ip in ip_domin:
