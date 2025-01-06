@@ -1,12 +1,9 @@
 name: Run IP Get Script
 
 on:
-  # 可以根据你的需求修改触发的事件，例如 push 事件或 schedule 事件
   push:
     branches:
       - main
-  schedule:
-    - cron: "*/5 * * * *"  # 每 5 分钟触发一次
 
 jobs:
   run-ip-get:
@@ -22,4 +19,4 @@ jobs:
       run: |
         pip install requests
     - name: Run ip_get.py
-      run: python ./ip_get.py
+      run: python .github/workflows/ip_get.py
