@@ -1,4 +1,4 @@
-name: Run IP Get Script
+name: Run IP Get Script and Push README
 
 on:
   push:
@@ -19,11 +19,13 @@ jobs:
       run: |
         pip install requests
     - name: Run ip_get.py
-      run: python .github/workflows/ip_get.py
+      run: python.github/workflows/ip_get.py
     - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "GitHub Action Bot"
         git config --global user.email "action@github.com"
         git add README.md
         git commit -m "Update README.md with new IP addresses"
-        git push
+        git push origin main
